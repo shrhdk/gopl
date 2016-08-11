@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"go/build"
 	"os"
@@ -14,30 +15,45 @@ func init() {
 }
 
 func main() {
-	walkImports(os.Args[1], make(map[string]bool), 0, func(importPath string, depth int) {
-		for i := 0; i < depth; i++ {
-			fmt.Print("  ")
-		}
-		fmt.Println(importPath)
+	var depth int
+	walkImports(os.Args[1], func(pkg *build.Package) {
+		fmt.Println(indent(depth) + pkg.ImportPath)
+		depth++
+	}, func(pkg *build.Package) {
+		depth--
 	})
 }
 
-func walkImports(importPath string, seen map[string]bool, depth int, f func(string, int)) {
-	if seen[importPath] {
-		return
+func indent(depth int) string {
+	var buf bytes.Buffer
+	for i := 0; i < depth; i++ {
+		buf.WriteString("  ")
 	}
+	return buf.String()
+}
 
-	pkginfo, err := readPkg(importPath)
-	if err != nil {
-		return
+func walkImports(importPath string, start, end func(*build.Package)) {
+	seen := make(map[string]bool)
+	var walk func(string, func(*build.Package), func(*build.Package))
+	walk = func(importPath string, start, end func(*build.Package)) {
+		if seen[importPath] {
+			return
+		}
+
+		pkginfo, err := readPkg(importPath)
+		if err != nil {
+			return
+		}
+
+		seen[importPath] = true
+
+		start(pkginfo)
+		for _, dep := range pkginfo.Imports {
+			walk(dep, start, end)
+		}
+		end(pkginfo)
 	}
-
-	seen[importPath] = true
-
-	f(pkginfo.ImportPath, depth)
-	for _, dep := range pkginfo.Imports {
-		walkImports(dep, seen, depth+1, f)
-	}
+	walk(importPath, start, end)
 }
 
 func readPkg(importPath string) (*build.Package, error) {
