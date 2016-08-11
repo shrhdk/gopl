@@ -14,12 +14,15 @@ func init() {
 }
 
 func main() {
-	walkImports(os.Args[1], make(map[string]bool), func(importPath string) {
+	walkImports(os.Args[1], make(map[string]bool), 0, func(importPath string, depth int) {
+		for i := 0; i < depth; i++ {
+			fmt.Print("  ")
+		}
 		fmt.Println(importPath)
 	})
 }
 
-func walkImports(importPath string, seen map[string]bool, f func(string)) {
+func walkImports(importPath string, seen map[string]bool, depth int, f func(string, int)) {
 	if seen[importPath] {
 		return
 	}
@@ -31,9 +34,9 @@ func walkImports(importPath string, seen map[string]bool, f func(string)) {
 
 	seen[importPath] = true
 
-	f(pkginfo.ImportPath)
+	f(pkginfo.ImportPath, depth)
 	for _, dep := range pkginfo.Imports {
-		walkImports(dep, seen, f)
+		walkImports(dep, seen, depth+1, f)
 	}
 }
 
