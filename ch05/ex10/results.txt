@@ -1,0 +1,44 @@
+$ ./ex10
+1:      intro to programming    -> OK
+2:      discrete math           -> OK
+3:      data structures         -> OK
+4:      formal languages        -> OK
+5:      computer organization   -> OK
+6:      programming languages   -> OK
+7:      compilers               -> OK
+8:      linear algebra          -> OK
+9:      calculus                -> OK
+10:     operating systems       -> OK
+11:     networks                -> OK
+12:     databases               -> OK
+13:     algorithms              -> OK
+
+$ ./ex10
+1:      computer organization   -> OK
+2:      intro to programming    -> OK
+3:      discrete math           -> OK
+4:      data structures         -> OK
+5:      programming languages   -> OK
+6:      databases               -> OK
+7:      operating systems       -> OK
+8:      algorithms              -> OK
+9:      linear algebra          -> OK
+10:     calculus                -> OK
+11:     formal languages        -> OK
+12:     networks                -> OK
+13:     compilers               -> OK
+
+$ ./ex10
+1:      intro to programming    -> OK
+2:      discrete math           -> OK
+3:      data structures         -> OK
+4:      computer organization   -> OK
+5:      operating systems       -> OK
+6:      formal languages        -> OK
+7:      compilers               -> OK
+8:      databases               -> OK
+9:      programming languages   -> OK
+10:     networks                -> OK
+11:     algorithms              -> OK
+12:     linear algebra          -> OK
+13:     calculus                -> OK

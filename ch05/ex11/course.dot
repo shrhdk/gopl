@@ -1,0 +1,27 @@
+digraph Course {
+    "algorithms" -> "data structures";
+
+    "calculus" -> "linear algebra";
+
+    "linear algebra" -> "calculus";
+
+    "compilers" -> "data structures";
+    "compilers" -> "formal languages";
+    "compilers" -> "computer organization";
+
+    "data structures" -> "discrete math";
+
+    "databases" -> "data structures";
+
+    "discrete math" -> "intro to programming";
+
+    "formal languages" -> "discrete math";
+
+    "networks" -> "operating systems";
+
+    "operating systems" -> "data structures";
+    "operating systems" -> "computer organization";
+
+    "programming languages" -> "data structures";
+    "programming languages" -> "computer organization";
+}

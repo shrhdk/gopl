@@ -1,0 +1,8 @@
+PASS
+BenchmarkDraw-8           	      30	  40156889 ns/op
+BenchmarkDrawParallel2-8  	     100	  22826760 ns/op
+BenchmarkDrawParallel5-8  	     100	  14581344 ns/op
+BenchmarkDrawParallel10-8 	     100	  14336499 ns/op
+BenchmarkDrawParallel50-8 	     100	  15043835 ns/op
+BenchmarkDrawParallel100-8	     100	  16166586 ns/op
+ok  	ch08/ex05/surface	9.630s
