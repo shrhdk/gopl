@@ -1,10 +1,11 @@
 package main
 
 import (
-	"ch04/ex11/github"
 	"fmt"
 	"os"
 	"strconv"
+
+	"gopl.shiro.be/ch04/ex11/github"
 )
 
 func main() {
