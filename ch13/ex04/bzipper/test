@@ -1,0 +1,14 @@
+#!/bin/sh
+
+go get gopl.shiro.be/ch13/ex04/bzipper
+
+BZIPPER=$GOPATH/bin/bzipper
+FILE=/usr/share/dict/words
+SHA=shasum
+
+set -x
+
+wc -c < $FILE
+$BZIPPER < $FILE | wc -c
+$SHA < $FILE
+$BZIPPER < $FILE | bunzip2 | $SHA
