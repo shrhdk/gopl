@@ -10,14 +10,14 @@ import (
 )
 
 func TestEqualSmallValue(t *testing.T) {
-	e1, e2 := 0.0, 1e-10
+	e1, e2 := 0.0, 9e-10
 	if !Equal(e1, e2) {
 		t.Errorf("expect %e==%e, but not.", e1, e2)
 	}
 }
 
 func TestNotEqualSmallBigValue(t *testing.T) {
-	e1, e2 := 0.0, 1e-8
+	e1, e2 := 0.0, 1e-9
 	if Equal(e1, e2) {
 		t.Errorf("expect %e!=%e, but not.", e1, e2)
 	}

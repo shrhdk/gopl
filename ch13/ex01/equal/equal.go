@@ -115,7 +115,7 @@ func Equal(x, y interface{}) bool {
 
 func equalNum(x, y float64) bool {
 	const eps = 1e-9
-	return math.Abs(x-y) <= eps
+	return math.Abs(x-y) < eps
 }
 
 type comparison struct {
