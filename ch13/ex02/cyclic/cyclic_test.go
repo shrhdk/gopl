@@ -19,6 +19,12 @@ func TestIsCyclic(t *testing.T) {
 	var cyclicArray [1]interface{}
 	cyclicArray[0] = &cyclicArray
 
+	var cyclicSlice []interface{}
+	cyclicSlice = append(cyclicSlice, cyclicSlice)
+
+	cyclicMap := make(map[int]interface{})
+	cyclicMap[0] = cyclicMap
+
 	tests := []struct {
 		give interface{}
 		want bool
@@ -37,6 +43,8 @@ func TestIsCyclic(t *testing.T) {
 		{item1, true},
 		{cyclicStruct, true},
 		{cyclicArray, true},
+		{cyclicSlice, true},
+		{cyclicMap, true},
 	}
 
 	for _, test := range tests {

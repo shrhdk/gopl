@@ -22,6 +22,16 @@ func isCyclic(v reflect.Value, seen []unsafe.Pointer) bool {
 		seen = append(seen, ptr)
 	}
 
+	if v.Kind() == reflect.Slice || v.Kind() == reflect.Map {
+		ptr := unsafe.Pointer(v.Pointer())
+		for _, p := range seen {
+			if p == ptr {
+				return true
+			}
+		}
+		seen = append(seen, ptr)
+	}
+
 	switch v.Kind() {
 	case reflect.Ptr, reflect.Interface:
 		if isCyclic(v.Elem(), seen) {
