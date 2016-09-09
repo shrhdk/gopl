@@ -37,9 +37,7 @@ func isCyclic(v reflect.Value, seen []unsafe.Pointer) bool {
 
 	switch v.Kind() {
 	case reflect.Ptr, reflect.Interface:
-		if isCyclic(v.Elem(), seen) {
-			return true
-		}
+		return isCyclic(v.Elem(), seen)
 
 	case reflect.Array, reflect.Slice:
 		for i := 0; i < v.Len(); i++ {
