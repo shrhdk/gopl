@@ -13,6 +13,9 @@ func TestIsCyclic(t *testing.T) {
 	item1.next = &item2
 	item2.next = &item1
 
+	var ncitem1, ncitem2 LinkedList
+	ncitem1.next = &ncitem2
+
 	cyclicStruct := struct{ i interface{} }{}
 	cyclicStruct.i = &cyclicStruct
 
@@ -39,6 +42,7 @@ func TestIsCyclic(t *testing.T) {
 		{make([]int, 0), false},
 		{make(map[bool]bool), false},
 		{&struct{}{}, false},
+		{ncitem1, false},
 		{nonCyclicMap, false},
 		{item1, true},
 		{cyclicStruct, true},

@@ -19,7 +19,10 @@ func isCyclic(v reflect.Value, seen []unsafe.Pointer) bool {
 				return true
 			}
 		}
-		seen = append(seen, ptr)
+
+		if v.Kind() != reflect.Struct && v.Kind() != reflect.Array {
+			seen = append(seen, ptr)
+		}
 	}
 
 	if v.Kind() == reflect.Slice || v.Kind() == reflect.Map {
