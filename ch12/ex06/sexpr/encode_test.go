@@ -46,13 +46,7 @@ func TestOmitZeroValues(t *testing.T) {
 		Oscars          []string
 		Sequel          *string
 	}
-	strangelove := Movie{
-		Title:    "",
-		Subtitle: "",
-		Year:     0,
-		Actor:    nil,
-		Oscars:   nil,
-	}
+	strangelove := Movie{} // all fields are zero
 
 	// Encode it
 	data, err := Marshal(strangelove)
