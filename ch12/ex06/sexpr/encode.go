@@ -83,7 +83,7 @@ func encode(buf *bytes.Buffer, v reflect.Value) error {
 				buf.WriteByte(' ')
 			}
 			val := v.MapIndex(key).Interface()
-			zero := reflect.Zero(reflect.TypeOf(v.MapIndex(key))).Interface()
+			zero := reflect.Zero(v.MapIndex(key).Type()).Interface()
 			if reflect.DeepEqual(val, zero) {
 				continue
 			}
