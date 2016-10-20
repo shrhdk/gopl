@@ -1,10 +1,11 @@
 package main
 
 import (
-	"ch05/ex13/links"
 	"fmt"
 	"log"
 	"os"
+
+	"github.com/shrhdk/gopl/ch05/ex13/links"
 )
 
 func main() {

@@ -1,11 +1,12 @@
 package main
 
 import (
-	"ch04/ex10/github"
 	"fmt"
 	"log"
 	"os"
 	"time"
+
+	"github.com/shrhdk/gopl/ch04/ex10/github"
 )
 
 func main() {

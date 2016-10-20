@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"gopl.shiro.be/ch10/ex02/archive"
+	"github.com/shrhdk/gopl/ch10/ex02/archive"
 )
 
 // Reader provies implementation of archive.Reader

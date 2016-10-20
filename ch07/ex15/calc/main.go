@@ -1,11 +1,12 @@
 package main
 
 import (
-	"ch07/ex13/eval"
 	"fmt"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/shrhdk/gopl/ch07/ex13/eval"
 )
 
 func main() {

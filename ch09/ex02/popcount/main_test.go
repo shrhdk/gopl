@@ -27,7 +27,7 @@ func TestPopCount(t *testing.T) {
 }
 
 // v option of `go test` shows result of
-// go test -v gopl.shiro.be/ch09/ex02/popcount
+// go test -v github.com/shrhdk/gopl/ch09/ex02/popcount
 func TestPopCountPerformance(t *testing.T) {
 	for i := 0; i < 10; i++ {
 		start := time.Now()

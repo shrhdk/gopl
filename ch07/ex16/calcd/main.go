@@ -1,11 +1,12 @@
 package main
 
 import (
-	"ch07/ex13/eval"
 	"fmt"
 	"log"
 	"net/http"
 	"text/template"
+
+	"github.com/shrhdk/gopl/ch07/ex13/eval"
 )
 
 var calc = template.Must(template.New("calc").Parse(`<!DOCTYPE html>

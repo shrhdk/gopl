@@ -3,8 +3,8 @@ package main
 import (
 	"io"
 	"net/http"
-	"time"
 	"net/url"
+	"time"
 )
 
 func fetch(url *url.URL, dst io.Writer, cancel <-chan struct{}) error {

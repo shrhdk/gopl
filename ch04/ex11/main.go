@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	"gopl.shiro.be/ch04/ex11/github"
+	"github.com/shrhdk/gopl/ch04/ex11/github"
 )
 
 func main() {

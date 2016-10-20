@@ -11,7 +11,7 @@ import (
 	"os"
 )
 
-// go build gopl.shiro.be/ch10/ex01/imgconv
+// go build github.com/shrhdk/gopl/ch10/ex01/imgconv
 // cat gopher.jpg | ./imgconv -t png > gopher.png
 func main() {
 	format := flag.String("t", "jpeg", "[jpg|jpeg|png|gif]")

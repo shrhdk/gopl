@@ -10,7 +10,7 @@ import (
 	"sync"
 	"testing"
 
-	"gopl.shiro.be/ch13/ex03/bzip" // writer
+	"github.com/shrhdk/gopl/ch13/ex03/bzip" // writer
 )
 
 func TestBzip2(t *testing.T) {

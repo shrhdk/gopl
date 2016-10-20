@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"gopl.shiro.be/ch04/ex14/github"
+	"github.com/shrhdk/gopl/ch04/ex14/github"
 )
 
 func printUsageAndExit() {

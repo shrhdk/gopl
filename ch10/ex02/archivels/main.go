@@ -5,9 +5,9 @@ import (
 	"io"
 	"os"
 
-	"gopl.shiro.be/ch10/ex02/archive"
-	_ "gopl.shiro.be/ch10/ex02/archive/tar"
-	_ "gopl.shiro.be/ch10/ex02/archive/zip"
+	"github.com/shrhdk/gopl/ch10/ex02/archive"
+	_ "github.com/shrhdk/gopl/ch10/ex02/archive/tar"
+	_ "github.com/shrhdk/gopl/ch10/ex02/archive/zip"
 )
 
 func main() {

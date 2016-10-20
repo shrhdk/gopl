@@ -1,6 +1,6 @@
 #!/bin/sh
 
-go get gopl.shiro.be/ch13/ex04/bzipper
+go get github.com/shrhdk/gopl/ch13/ex04/bzipper
 
 BZIPPER=$GOPATH/bin/bzipper
 FILE=/usr/share/dict/words
