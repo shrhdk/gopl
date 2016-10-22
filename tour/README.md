@@ -1,18 +1,22 @@
+<!-- page_number: true -->
+
 # A Quick Tour of Go for Java programmers
 
-JavaプログラマのためのGo早わかり (文法にはあまり触れない)
+---
 
-## Goのインストール
+# Goのインストール
 
 [Goの公式サイト](https://golang.org/)からバイナリがダウンロードできます。
 
-macOSならHomebrewからもインストールできます。
+macOSならHomebrewでインストールできます。
 
 ```sh
 $ brew install go
 ```
 
-## GOPATH
+---
+
+# GOPATH
 
 Goをインストールしたらはじめに環境変数`GOPATH`を設定する必要があります。
 
@@ -30,7 +34,9 @@ $GOPATH/
 
 こだわりが無ければ`$HOME`や`$HOME/go`でいいです。後から変更できるので悩む必要はないです。
 
-## go get
+---
+
+# go get
 
 `GOPATH`を設定すると`go get`コマンドが実行できるようになります。
 
@@ -56,28 +62,31 @@ $GOPATH/
                 |-- main.go
 ```
 
-`go get <import_path>`と実行すると`<import_path>`の先から
-コードをダウンロードして`$GOPATH/src/<import_path>`に配置します。
+---
+
+`go get <import_path>`と実行すると`<import_path>`の先からコードをダウンロードして`$GOPATH/src/<import_path>`に配置します。
 
 そしてコードをビルドして、生成された実行ファイルを`$GOPATH/bin`に配置します。
-ここで注意したいのは`.git`フォルダもダウンロードされていることです。
 
-`go get`した結果はそのままGitのリポジトリとして取り扱うことができます。
+ここで注意したいのは`.git`フォルダもダウンロードされていることです。`go get`した結果はそのままGitのリポジトリとして扱えます。
 
-`<import_path>`に関する細かい規則は以下に書かれています。
+`<import_path>`に関する細かい規則は次のページに書かれています。
 
 http://golang-jp.org/doc/code.html#remote
 
-## プロジェクト
+---
 
-Javaでは`build.xml`、`pom.xml`、`build.gradle`といったファイルを置いて、
-プロジェクトを単位として開発をすることが多いです。
+# プロジェクト
+
+Javaでは`build.xml`、`pom.xml`、`build.gradle`といったファイルを置いて、プロジェクトを単位として開発をすることが多いです。
 
 しかし、Goでは標準ではプロジェクトファイルのような仕組みは用意されていません。
 
 Goでは1つのワークスペース上ですべての開発を行います。`GOPATH`がそれです。
 
-## main関数
+---
+
+# main関数
 
 Javaでいうところの`public static void main(String[] args)`は単に`func main()`となります。
 
@@ -96,6 +105,8 @@ func main() {
     // Goのエントリポイント
 }
 ```
+
+---
 
 Go言語では関数を直に書けます。メソッドではなく関数です。
 
@@ -116,12 +127,15 @@ func main() {
 }
 ```
 
+---
+
 Goの`import`はJavaとは意味が異なるので注意してください。
 
-Javaではあくまでもコード中でパッケージ名の記述を省略するための宣言でしたが、
-Goでは別パッケージを参照するための宣言となります。
+Javaではあくまでもコード中でパッケージ名の記述を省略するための宣言でしたが、Goでは別パッケージを参照するための宣言となります。
 
-## パッケージ
+---
+
+# パッケージ
 
 Goにもパッケージの概念があります。
 
@@ -135,7 +149,9 @@ package foo
 
 package宣言は必須です。デフォルトパッケージはありません。
 
-また、一つのパッケージはファイルシステム上の一つのフォルダと密接に対応します。
+---
+
+1つのパッケージはファイルシステム上の1つのフォルダと密接に対応します。
 
 ```
 $GOPATH/
@@ -149,19 +165,21 @@ $GOPATH/
             |-- hoge2.go
 ```
 
-一つのフォルダ内で矛盾するパッケージ宣言がされている場合はコンパイルエラーになります。
+フォルダ内で矛盾するパッケージ宣言がされている場合はコンパイルエラーになります。
 
-例えば`hoge.go`では`package foo`が宣言され、
-`fuga.go`では`package foofoo`が宣言されていた場合エラーです。
+例えば`hoge.go`では`package foo`が宣言され、`fuga.go`では`package foofoo`が宣言されていた場合エラーです。
 
-## インポートパス
+---
 
-パッケージ名と混同しやすく、Go独自の概念にインポートパスがあります。
+# インポートパス
+
+パッケージ名と混同しやすい概念にインポートパスがあります。
 
 インポートパスは`go get`や`import`でパッケージを指定する文字列です。
 
-例えば`https://github.com/shrhdk/foo`に配置されたパッケージであれば、
-インポートパスは`github.com/shrhdk/foo`になります。
+例えば`https://github.com/shrhdk/foo`に配置されたパッケージであれば、インポートパスは`github.com/shrhdk/foo`になります。
+
+---
 
 インポートパスとパッケージ名は独立したものです。
 インポートパスはソースコードが配置されているパスで、
@@ -172,20 +190,19 @@ $GOPATH/
 インポートパスが`https://github.com/shrhdk/foo`であれば、
 そのフォルダにあるコードのパッケージ名は`foo`にします。
 
-Javaではパッケージ名にドメイン名を使うことでの名前の衝突を避けていましたが、
-Goではインポートパスに必然的にドメイン名が含まれるので衝突が避けられます。
+---
+
+Javaではパッケージ名にドメイン名を使うことでの名前の衝突を避けていましたが、Goではインポートパスに必然的にドメイン名が含まれるので衝突が避けられます。
 
 ただ、パッケージ名は衝突する可能性があります。
-例えば`github.com/shrhdk/foo`と`github.com/mikan/foo`は
-インポートパスは衝突しませんがパッケージ名は衝突します。(どちらも`foo`)
+
+例えば`github.com/shrhdk/foo`と`github.com/mikan/foo`はインポートパスは衝突しませんがパッケージ名は衝突します。(どちらも`foo`)
 
 解決方法はありますがここでは説明しません。
 
-再掲ですが、インポートパスに関する細かい規則は以下に書かれています。
+---
 
-http://golang-jp.org/doc/code.html#remote
-
-## パッケージのパスまわりまとめ
+# パッケージのパスまわりまとめ
 
 ```
 リポジトリURL  :     https://github.com/shrhdk/foo
@@ -195,7 +212,9 @@ http://golang-jp.org/doc/code.html#remote
 パッケージ名   :                               foo
 ```
 
-## アクセスレベル
+---
+
+# アクセスレベル
 
 Javaは`public`, `protected`, `private`, `package private`といった、
 細やかなアクセスレベルの設定が可能ですが、そのあたりGoは大雑把というかシンプルです。
@@ -209,19 +228,23 @@ var Foo string これはpublic
 var bar string これはpackage private
 ```
 
-## type
+---
+
+# type
 
 Javaでいうところのプリミティブ型に別名をつけたりメソッドを定義したりできます。
 
 ```go
 type Username string
 
-func (t Token) Encode() []byte {
+func (u Username) Encode() []byte {
     ...
 }
 ```
 
-## defer (try-finally)
+---
+
+# defer (try-finally)
 
 Javaでは必ず実行したい処理はfinallyブロックに書きます。
 
@@ -235,6 +258,8 @@ void bar() {
     }
 }
 ```
+
+---
 
 対して、Goではdefer分を使います。
 
@@ -255,9 +280,11 @@ func foo() {
 
 また、defer文は関数の式を書くのではなく、関数呼び出しを書きます。
 
-上の例では`defer f.Close`と書くとエラーです。これは混乱しやすいです。
+上の例では`defer f.Close`と書くとエラーです。(これは混乱しやすい)
 
-## nilは正当なレシーバー
+---
+
+# nilは正当なレシーバー
 
 Javaの場合、次の例では必ず例外が発生します。
 
@@ -283,24 +310,23 @@ function (f *Foo) Bar() string {
 }
 ```
 
-## 例外処理
+---
 
-Javaの場合`throws`、`throw`、`try-catch`といった文があり、
-例外処理が言語レベルでサポートされています。
+# 例外処理
 
-Goの場合はシンプルに最後の返り値でerrorオブジェクトを返します。
+Goの例外処理は最後の返り値でerrorオブジェクトを返します。
 
 ```go
 func Parse(s string) (int, error) {
     ...
     if num < 0 {
-        return 0, errors.New("結果が0より小さいです") // エラー発生時
+        return 0, errors.New("値が0より小さいです") // エラー発生時
     }
     return num, nil // 成功時
 }
 ```
 
-呼び出し側では最後の返り値がnilか否かを検査することでエラーの有無を判別します。
+呼び出し側では最後の返り値がnilか否かを検査します。
 
 ```go
 func main() {
@@ -311,27 +337,28 @@ func main() {
 }
 ```
 
-Javaでは`Exception`に`cause`を設定することで、
-抽象的な情報から詳細な情報まで報告しますが、
-Goでも同様の習慣があります。
+---
+
+Javaでは`Exception`に`cause`を設定することで、抽象的な情報から詳細な情報まで報告しますが、Goでも同様の習慣があります。
 
 ```go
 func Parse(s  string) (int, error) {
     num, err := strconv.Atoi(s)
     if err != nil {
         // errを含んだ新しいerrorを返す
-        return 0, fmt.Errorf("%sを数値にするのに失敗: %v", s, err)
+        return 0, fmt.Errorf("%sの数値化に失敗: %v", s, err)
     }
     ...
 }
 ```
 
-## テスト
+---
+
+# テスト
 
 Goでは標準でテストの仕組みが用意されています。
 
-テストは`hoge_test.go`という具合にサフィックス`_test`がついたファイルに書きます。
-`hoge_test.go`はテスト対象のパッケージと同じフォルダに置きます。
+テストは`hoge_test.go`という具合にサフィックス`_test`がついたファイルに書きます。`hoge_test.go`はテスト対象のパッケージと同じフォルダに置きます。
 
 テストの書き方の説明は割愛しますが、書いたテストは以下のように実行します。
 
@@ -339,7 +366,9 @@ Goでは標準でテストの仕組みが用意されています。
 $ go test <import_path>
 ```
 
-## ドキュメンテーション
+---
+
+# ドキュメンテーション
 
 GoでもJavadocのようなドキュメンテーションコメントを書けます。
 
@@ -352,11 +381,11 @@ func Hello() {
 }
 ```
 
-JavaではドキュメンテーションコメントをHTMLに変換したものをまとめて、
-別途ホスティングしたり、アーカイブを配布する必要がありました。
+---
 
-しかし、これはGoでは不要です。
-単にコードにドキュメンテーションコメントを書いておくだけでOKです。
+JavaではドキュメンテーションコメントをHTMLに変換したものをまとめて、別途ホスティングしたり、アーカイブを配布する必要がありました。
+
+しかし、これはGoでは不要です。単にコードにドキュメンテーションコメントを書いておくだけでOKです。
 
 利用者は`go doc`コマンド一発でドキュメントを閲覧可能です。
 
@@ -364,10 +393,12 @@ JavaではドキュメンテーションコメントをHTMLに変換したもの
 $ go doc <import_path>[.<変数名|関数名|型名>]
 ```
 
-例えば`io`パッケージのドキュメントは次のコマンドで見られます。
+---
+
+`io`パッケージのドキュメントは次のコマンドで見られます。
 
 ```sh
-$ go doc fmt
+$ go doc io
 package io // import "io"
 
 Package io provides basic interfaces to I/O primitives. Its primary job is
@@ -383,10 +414,11 @@ var EOF = errors.New("EOF")
     ErrUnexpectedEOF or some other error giving more detail.
 ```
 
+---
+
 JavadocのようにHTML形式で閲覧することも可能です。
 
-次のコマンドを実行するとドキュメンテーションコメントを
-HTML化したファイルをホストするWebサーバーが立ち上がります。
+次のコマンドを実行するとドキュメンテーションコメントをHTML化したファイルをホストするWebサーバーが立ち上がります。
 
 `GOROOT`および`GOPATH`内のすべてのパッケージのドキュメントを閲覧できます。
 
